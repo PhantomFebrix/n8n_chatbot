@@ -8,9 +8,22 @@ function ChatWindow() {
   const listRef = useRef(null);
 
   useEffect(() => {
-    if (!listRef.current) return;
-    listRef.current.scrollTop = listRef.current.scrollHeight;
-  }, [messages]);
+    const node = listRef.current;
+    if (!node) return;
+
+    const scrollToBottom = () => {
+      node.scrollTo({
+        top: node.scrollHeight,
+        behavior: 'smooth',
+      });
+    };
+
+    if (typeof window !== 'undefined' && window.requestAnimationFrame) {
+      window.requestAnimationFrame(scrollToBottom);
+    } else {
+      scrollToBottom();
+    }
+  }, [messages, isLoading]);
 
   const statusMessage = useMemo(() => {
     if (error) {
