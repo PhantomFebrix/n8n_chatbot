@@ -62,6 +62,8 @@ body {
 .app-main {
   padding: 0 3rem 1.5rem;
   display: flex;
+  min-height: 0;
+  width: 100%;
 }
 
 .app-footer {
@@ -86,6 +88,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
   border-radius: 20px;
   background: #f5f7ff;
   border: 1px solid rgba(79, 70, 229, 0.15);
@@ -134,11 +137,91 @@ body {
   position: relative;
 }
 
+.chat-content {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font: inherit;
+}
+
+.chat-content p,
+.chat-content ul,
+.chat-content ol,
+.chat-content pre,
+.chat-content blockquote {
+  margin: 0;
+}
+
+.chat-content ul,
+.chat-content ol {
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.chat-content li {
+  padding-left: 0.25rem;
+}
+
+.chat-content code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', ui-monospace, SFMono-Regular,
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.85em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 8px;
+  background: rgba(79, 70, 229, 0.08);
+  color: #3730a3;
+}
+
+.chat-content pre {
+  background: rgba(79, 70, 229, 0.08);
+  padding: 0.85rem;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.chat-content pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.9em;
+}
+
+.chat-content blockquote {
+  border-left: 4px solid rgba(79, 70, 229, 0.25);
+  padding-left: 0.75rem;
+  color: #4338ca;
+  font-style: italic;
+}
+
+.chat-content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(79, 70, 229, 0.4);
+  text-decoration-thickness: 2px;
+}
+
 .chat-bubble.user {
   margin-left: auto;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
   align-items: flex-end;
+}
+
+.chat-bubble.user .chat-content code,
+.chat-bubble.user .chat-content pre {
+  background: rgba(255, 255, 255, 0.18);
+  color: #eef2ff;
+}
+
+.chat-bubble.user .chat-content blockquote {
+  border-left-color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.chat-bubble.user .chat-content a {
+  text-decoration-color: rgba(255, 255, 255, 0.5);
 }
 
 .chat-bubble.bot {
@@ -260,6 +343,7 @@ body {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
 }
 

@@ -12,6 +12,22 @@ function ChatWindow() {
     if (!node) return;
 
     const scrollToBottom = () => {
+      if (typeof node.scrollTo === 'function') {
+        try {
+          node.scrollTo({
+            top: node.scrollHeight,
+            behavior: 'smooth',
+          });
+          return;
+        } catch (err) {
+          // fall back to direct assignment below
+        }
+      }
+
+      node.scrollTop = node.scrollHeight;
+    };
+
+    if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
       node.scrollTo({
         top: node.scrollHeight,
         behavior: 'smooth',
@@ -23,7 +39,7 @@ function ChatWindow() {
     } else {
       scrollToBottom();
     }
-  }, [messages, isLoading]);
+  }, [messages, isLoading, error]);
 
   const statusMessage = useMemo(() => {
     if (error) {

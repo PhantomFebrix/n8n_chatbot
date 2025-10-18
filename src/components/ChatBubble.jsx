@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import MarkdownMessage from './MarkdownMessage.jsx';
 
 function ChatBubble({ message }) {
   const isUser = message.role === 'user';
@@ -7,7 +8,7 @@ function ChatBubble({ message }) {
       <span className="chat-author" aria-hidden>
         {isUser ? '👤' : '🤖'}
       </span>
-      <p>{message.content}</p>
+      <MarkdownMessage className="chat-content" content={message.content} />
       {message.timestamp ? (
         <time dateTime={message.timestamp.toISOString()} className="chat-timestamp">
           {message.timestamp.toLocaleTimeString('tr-TR', {

@@ -18,6 +18,7 @@ function createMessage(role, content) {
 }
 
 function useChat() {
+  const sessionId = useMemo(() => createId(), []);
   const [messages, setMessages] = useState([
     createMessage(
       'assistant',
@@ -52,6 +53,7 @@ function useChat() {
       const nextHistory = messages
         .concat(userMessage)
         .map(({ role, content: messageContent }) => ({ role, content: messageContent }));
+      const payload = { message: content, history: nextHistory, sessionId };
       const payload = { message: content, history: nextHistory };
 
       setMessages((prev) => [...prev, userMessage]);
@@ -63,6 +65,7 @@ function useChat() {
         console.error(err);
       }
     },
+    [executePrompt, messages, sessionId],
     [executePrompt, messages],
   );
 
