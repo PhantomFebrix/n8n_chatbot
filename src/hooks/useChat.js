@@ -54,6 +54,7 @@ function useChat() {
         .concat(userMessage)
         .map(({ role, content: messageContent }) => ({ role, content: messageContent }));
       const payload = { message: content, history: nextHistory, sessionId };
+      const payload = { message: content, history: nextHistory };
 
       setMessages((prev) => [...prev, userMessage]);
       setLastPayload(payload);
@@ -65,6 +66,7 @@ function useChat() {
       }
     },
     [executePrompt, messages, sessionId],
+    [executePrompt, messages],
   );
 
   const retry = useCallback(async () => {

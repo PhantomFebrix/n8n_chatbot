@@ -28,6 +28,13 @@ function ChatWindow() {
     };
 
     if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+      node.scrollTo({
+        top: node.scrollHeight,
+        behavior: 'smooth',
+      });
+    };
+
+    if (typeof window !== 'undefined' && window.requestAnimationFrame) {
       window.requestAnimationFrame(scrollToBottom);
     } else {
       scrollToBottom();
