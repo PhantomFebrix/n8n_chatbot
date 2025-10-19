@@ -49,23 +49,24 @@ function useChat(sessionId) {
     const sendMessage = useCallback(
         async (content) => {
             const userMessage = createMessage('user', content);
-            const nextHistory = messages
-                .concat(userMessage)
-                .map(({ role, content: c }) => ({ role, content: c }));
 
-            // ← sessionId artık payload’ta
-            const payload = { sessionId, message: content, history: nextHistory };
+            // Use functional update to avoid dependency on messages
+            setMessages((prevMessages) => {
+                const nextHistory = prevMessages
+                    .concat(userMessage)
+                    .map(({ role, content: c }) => ({ role, content: c }));
 
-            setMessages((prev) => [...prev, userMessage]);
-            setLastPayload(payload);
+                // ← sessionId artık payload'ta
+                const payload = { sessionId, message: content, history: nextHistory };
+                setLastPayload(payload);
 
-            try {
-                await executePrompt(payload);
-            } catch (err) {
-                console.error(err);
-            }
+                // Execute prompt after setting payload
+                executePrompt(payload).catch(console.error);
+
+                return [...prevMessages, userMessage];
+            });
         },
-        [executePrompt, messages, sessionId], // ← dependency'e sessionId eklendi
+        [executePrompt, sessionId], // Removed messages from dependencies
     );
 
     const retry = useCallback(async () => {

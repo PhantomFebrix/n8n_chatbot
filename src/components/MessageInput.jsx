@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function MessageInput({ onSubmit, disabled }) {
+function MessageInput({ onSubmit, disabled = false }) {
   const [value, setValue] = useState('');
 
   const handleSubmit = (event) => {
@@ -37,10 +37,6 @@ function MessageInput({ onSubmit, disabled }) {
 MessageInput.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-};
-
-MessageInput.defaultProps = {
-  disabled: false,
 };
 
 export default MessageInput;

@@ -120,6 +120,18 @@ function parseMarkdown(content) {
             return;
         }
 
+        // Check for headings (# ## ### etc.)
+        const headingMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
+        if (headingMatch) {
+            flushParagraph();
+            flushList();
+            flushBlockquote();
+            const level = headingMatch[1].length;
+            const text = headingMatch[2];
+            blocks.push({ type: 'heading', level, text });
+            return;
+        }
+
         if (/^>\s?/.test(trimmed)) {
             flushParagraph();
             flushList();
@@ -162,13 +174,22 @@ function parseMarkdown(content) {
     return blocks;
 }
 
-function MarkdownMessage({ content, className }) {
+function MarkdownMessage({ content, className = undefined }) {
     const blocks = parseMarkdown(content);
 
     return (
         <div className={className}>
             {blocks.map((block, index) => {
                 const key = `${block.type}-${index}`;
+
+                if (block.type === 'heading') {
+                    const HeadingTag = `h${block.level}`;
+                    return (
+                        <HeadingTag key={key}>
+                            {renderInline(block.text, `${key}-inline`)}
+                        </HeadingTag>
+                    );
+                }
 
                 if (block.type === 'paragraph') {
                     return <p key={key}>{renderInline(block.text, `${key}-inline`)}</p>;
@@ -212,10 +233,6 @@ function MarkdownMessage({ content, className }) {
 MarkdownMessage.propTypes = {
     content: PropTypes.string.isRequired,
     className: PropTypes.string,
-};
-
-MarkdownMessage.defaultProps = {
-    className: undefined,
 };
 
 export default MarkdownMessage;

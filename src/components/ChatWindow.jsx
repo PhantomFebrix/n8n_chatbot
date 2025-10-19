@@ -66,7 +66,6 @@ function ChatWindow() {
                     <div className="dot" />
                     <div className="dot" />
                     <div className="dot" />
-                    <span>n8n yanıtlıyor…</span>
                 </div>
             );
         }

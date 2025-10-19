@@ -5,7 +5,6 @@ function App() {
     <div className="app-shell">
       <header className="app-header">
         <div className="logo" aria-hidden>
-          <span className="logo-mark">🤖</span>
           <span className="logo-text">Workinlot Chatbot Demo</span>
         </div>
         <p className="header-subtitle">

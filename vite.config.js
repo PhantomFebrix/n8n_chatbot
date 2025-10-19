@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Ngrok üzerinden erişilecek alan adını buraya gir
-const NGROK_HOST = 'prebuccal-conversationally-maxton.ngrok-free.dev';
+const NGROK_HOST = '91e32a084857.ngrok-free.app';
 
 export default defineConfig({
     plugins: [react()],
