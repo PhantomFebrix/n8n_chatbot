@@ -5,7 +5,6 @@
     line-height: 1.5;
     font-weight: 400;
 }
-
 * {
     box-sizing: border-box;
 }
@@ -46,7 +45,7 @@ body {
     gap: 0.75rem;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #4338ca;
+    color: #fc8f00;
 }
 
 .logo-text {
@@ -56,7 +55,7 @@ body {
 .header-subtitle {
     margin: 0.75rem 0 0;
     max-width: 560px;
-    color: #4b5563;
+    color: #d1780c;
 }
 
 .app-main {
@@ -204,7 +203,7 @@ body {
 
 .chat-bubble.user {
     margin-left: auto;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #ff9100, hsl(18, 75%, 42%));
     color: white;
     align-items: flex-end;
 }

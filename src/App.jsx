@@ -6,10 +6,10 @@ function App() {
       <header className="app-header">
         <div className="logo" aria-hidden>
           <span className="logo-mark">🤖</span>
-          <span className="logo-text">n8n Chatbot Demo</span>
+          <span className="logo-text">Workinlot Chatbot Demo</span>
         </div>
         <p className="header-subtitle">
-          n8n ile oluşturduğunuz iş akışını React tabanlı bir sohbet arayüzüyle sunun.
+          Poc pulse proje asistanı ile anında etkileşim kurun.
         </p>
       </header>
 
@@ -19,7 +19,7 @@ function App() {
 
       <footer className="app-footer">
         <p>
-          Webhook adresinizi <code>.env</code> dosyasına ekleyin ve n8n chatbotunuzla anında sohbet edin.
+          Proje akışınız hakkında hızlı yanıtlar almak için Poc Pulse Proje Asistanı ile sohbet edin.
         </p>
       </footer>
     </div>

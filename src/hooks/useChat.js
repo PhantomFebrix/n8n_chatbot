@@ -22,7 +22,7 @@ function useChat(sessionId) {
     const [messages, setMessages] = useState([
         createMessage(
             'assistant',
-            'Merhaba! Sorularınızı buraya yazabilirsiniz. n8n iş akışınızdan gelen yanıtları ben iletiyorum.',
+            'Merhaba! Ben Poc Pulse Proje Asistanıyım. Sorularınızı buraya yazabilirsiniz.',
         ),
     ]);
     const [isLoading, setIsLoading] = useState(false);
