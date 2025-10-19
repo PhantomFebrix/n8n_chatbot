@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 function renderInline(text, keyPrefix) {
     const nodes = [];
     const regex = /(\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\))/g;
-    let lastIndex = 0;
+    let lastIndex = 0;iş
     let match;
     let index = 0;
 
